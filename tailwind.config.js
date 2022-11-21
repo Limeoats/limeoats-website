@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { fontFamily } = require('tailwindcss/defaultTheme');
 module.exports = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx}",
@@ -10,7 +12,7 @@ module.exports = {
                 "limeoats-green": "#159957",
             },
             fontFamily: {
-                main: "Raleway, sans-serif",
+                main: ['var(--font-raleway)', ...fontFamily.sans],
             },
         },
     },
