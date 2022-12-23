@@ -4,7 +4,15 @@ import Footer from "../components/common/Footer";
 import Navbar from "../components/common/Navbar";
 import SectionHeading from "../components/common/SectionHeading";
 import SEO from "../components/common/SEO";
+import ProjectCard from "../components/project-card";
 import Button from "../components/ui/Button";
+
+const scrollToAnchor = (anchor: string) => {
+    const element = document.getElementById(anchor);
+    if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+    }
+};
 
 const Home: NextPage = () => {
     return (
@@ -23,26 +31,31 @@ const Home: NextPage = () => {
                     <h2 className="mt-8 text-3xl text-white md:text-4xl">
                         {"I'm a game developer and a web developer."}
                     </h2>
-                    <Button styles="mt-9" variant="outline" arrow={true}>
+                    <Button
+                        styles="mt-9"
+                        variant="outline"
+                        arrow={true}
+                        onClick={() => scrollToAnchor("about")}
+                    >
                         Learn more
                     </Button>
                 </div>
             </div>
-            <Navbar />
+            <Navbar home={true} />
             <div className="m-auto max-w-7xl lg:px-6">
-                <div id="about" className="mt-10">
+                <div id="about" className="pt-10">
                     <SectionHeading
                         title="About me"
                         underlineColor="bg-section-verydark"
                     />
                     <div className="flex flex-col lg:flex-row lg:items-center">
-                        <div className="border-r p-6 lg:max-w-[50%] lg:border-r-section-verydark">
+                        <div className="border-r px-6 py-2 lg:max-w-[50%] lg:border-r-section-verydark lg:px-2">
                             <Image
                                 src="/images/about-pic.jpg"
                                 alt="About"
                                 width={500}
                                 height={500}
-                                className="mb-4 w-full lg:h-[260px] lg:w-[96%]"
+                                className="w-full lg:h-[260px] lg:w-[96%]"
                             />
                         </div>
                         <div className="p-6 text-lg lg:max-w-[50%]">
@@ -78,14 +91,33 @@ const Home: NextPage = () => {
                         title="Projects"
                         underlineColor="bg-section-verydark"
                     />
+
+                    <ProjectCard
+                        title="Bomb Game"
+                        image={"/images/bomb game/bomb-game-promo.png"}
+                        feature
+                    />
+                    <ProjectCard title="Lime2D" image={"/images/lime2d.png"} />
+                    <ProjectCard
+                        title="BigNumber"
+                        image={"/images/bignumber.png"}
+                    />
+                    <ProjectCard
+                        title="Project Euler"
+                        image={"/images/projecteuler.png"}
+                    />
+                    <ProjectCard
+                        title="A Note For Lime"
+                        image={"/images/anoteforlime.png"}
+                    />
                 </div>
                 {/*
-            <div id="writing" className="mt-10">
-                <SectionHeading
-                    title="Writing"
-                    underlineColor="bg-section-verydark"
-                />
-            </div> */}
+<div id="writing" className="mt-10">
+<SectionHeading
+title="Writing"
+underlineColor="bg-section-verydark"
+/>
+</div> */}
             </div>
             <Footer />
         </>
